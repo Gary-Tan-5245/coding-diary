@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clean Code 101</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Clean Code Conduct</h1>
+    <p class="date">May 21, 2025</p>
+    <p>Writing clean code is more than just a technical skill—it's a mindset rooted in clarity, discipline, and respect for future developers. Inspired by <i>Robert C. Martin's</i> <strong>Clean Code</strong>, I've learned that readable, simple, and well-structured code leads to better collaboration and easier maintenance. From meaningful names to small, focused functions, the book emphasizes that every line of code should serve a clear purpose. Clean code isn't about perfection—it's about writing with care and intention.</p>
+    <a href="../index.html" class="main-button">← Back to Main Page</a>
+  </header>
+
+  <main class="container">
+  <section class="code-section">
+    <h2>Meaningful Grouping of Descriptive Naming in PHP</h2>
+    <pre><code class="language-python">
+      //GDI: Direct Fuel Injection
+      global $currentSpeed, $accelerometerPrevTime, $gdiInterval              
+      global $bmwM1SysTime, $bmwM1SysAlertTime, $bmwM1SysLogTime
+      global $motor1RevSpeed, $motor1Temp, $motor1PrevLogTime
+      global $motor2RevSpeed, $motor2Temp, $motor2PrevLogTime
+      global $motor3RevSpeed, $motor3Temp, $motor2PrevLogTime
+    </code></pre>
+  </section>
+
+    <article class="post">
+      <h2>Explanation of Good Variable Naming Practice</h2>
+      <p>These variables clearly convey their purpose, aligning with the principle of using meaningful and intention-revealing names.</p>
+      
+      <h3>Functional Grouping for Readability</h3>
+      <p>The variables are grouped by their categories (e.g., <code>$motor1</code>, <code>$motor2</code>, <code>$motor3</code>), which immediately communicates their relationship. For example:</p>
+      <ul>
+        <li><code>$motor1RevSpeed</code>, <code>$motor1Temp</code>, <code>$motor1PrevLogTime</code> belongs to Motor 1's critical data.</li>
+      </ul>
+      <p>In <i>Clean Code</i>, Robert emphasizes that names and structure should reflect intent clearly. Here, structure itself reinforces meaning:</p>
+      <blockquote>"Code should clearly reflect the problem it solves."</blockquote>
+      
+      <h3>Top-to-Bottom Dependency Structure</h3>
+      <blockquote>"Readable code is maintainable code"</blockquote>
+      <p>At the top, general-purpose vehicle data of <code>$currentSpeed</code>, <code>$accelerometerPrevTime</code> and <code>$gdiInterval</code> are defined. These are <strong>shared resources</strong> that the other vehicle segments depend upon. Placing them first follows a <strong>dependency-aware ordering</strong>, reflecting how data flows from a shared polling down into segment-specific behaviour. </p>
+      <p>One of the core tenets of <i>Clean Code</i> is that code should be <strong>readable like prose</strong>. A developer skimming through the code can easily "scan" to the subsystem they're working on — similar to chapters in a well-organized book.</p>
+      
+      <h3>Easier Refactoring and Scalability</h3>
+      <blockquote>“Minimize the number of concepts a reader must keep in mind”</blockquote>
+      <p>As per Clean Code, developers shouldn't have to hold too many unrelated details in their minds. Here, through organising variables by vehicle segments, engineers can easily add, remove or refactor entire segments without affecting others. </p>
+      <blockquote>“Code should be easy to change without fear”</blockquote>
+      <p>For instance, if Motor 3 is being discarded or redesigned for lower end vehicle models, its variables are isolated, making it safe from interference or misassociation with Motor 1 or 2. This speaks directly to Robert's idea that clean code is <strong>change-friendly</strong> — vital in iterative or team-based development.</p>
+      
+      <h3>Debugging and Logging Benefits</h3>
+      <p>If a bug arises in one segment's motor logic, this grouping allows engineers to quickly log or inspect only the relavent variables. For example, an <code>echo()</code> statement can be easily crafted for Motor 3 alone, without having to sift through unrelated shared variables.</p>
+
+      <hr/><br/>
+      <p>Although these are shared variables, this layout lays the groundwork for abstraction. For instance, in a more advanced version, these could evolve into dictionaries or classes, which will be shown in the next section and explained in depth in the third chapter of the series - <em>Key Value Mapping</em>.</p>
+    </article>
+
+    <section class="code-section">
+    <h2>Small, Focused Functions in PHP</h2>
+    <pre><code class="language-python">
+      //GDI: Direct Fuel Injection
+      global $currentSpeed, $accelerometerPrevTime, $gdiInterval              
+      global $bmwM1SysTime, $bmwM1SysAlertTime, $bmwM1SysLogTime
+      global $motor1RevSpeed, $motor1Temp, $motor1PrevLogTime
+      global $motor2RevSpeed, $motor2Temp, $motor2PrevLogTime
+      global $motor3RevSpeed, $motor3Temp, $motor2PrevLogTime
+    </code></pre>
+  </section>
+
+  <article>
+
+  </article>
+
+  <section class="code-section">
+    <h2>Clear, Self-Documenting Code in PHP</h2>
+    <pre><code class="language-python">
+      //GDI: Direct Fuel Injection
+      global $currentSpeed, $accelerometerPrevTime, $gdiInterval              
+      global $bmwM1SysTime, $bmwM1SysAlertTime, $bmwM1SysLogTime
+      global $motor1RevSpeed, $motor1Temp, $motor1PrevLogTime
+      global $motor2RevSpeed, $motor2Temp, $motor2PrevLogTime
+      global $motor3RevSpeed, $motor3Temp, $motor2PrevLogTime
+    </code></pre>
+  </section>
+
+  <article>
+
+  </article>
+
+  <section class="code-section">
+    <h2>Avoidance of Magic Numbers in PHP</h2>
+    <pre><code class="language-python">
+      //GDI: Direct Fuel Injection
+      global $currentSpeed, $accelerometerPrevTime, $gdiInterval              
+      global $bmwM1SysTime, $bmwM1SysAlertTime, $bmwM1SysLogTime
+      global $motor1RevSpeed, $motor1Temp, $motor1PrevLogTime
+      global $motor2RevSpeed, $motor2Temp, $motor2PrevLogTime
+      global $motor3RevSpeed, $motor3Temp, $motor2PrevLogTime
+    </code></pre>
+  </section>
+
+  <article>
+
+  </article>
+
+  <section class="code-section">
+    <h2>Defensive Programming in PHP</h2>
+    <pre><code class="language-python">
+      //GDI: Direct Fuel Injection
+      global $currentSpeed, $accelerometerPrevTime, $gdiInterval              
+      global $bmwM1SysTime, $bmwM1SysAlertTime, $bmwM1SysLogTime
+      global $motor1RevSpeed, $motor1Temp, $motor1PrevLogTime
+      global $motor2RevSpeed, $motor2Temp, $motor2PrevLogTime
+      global $motor3RevSpeed, $motor3Temp, $motor2PrevLogTime
+    </code></pre>
+  </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gary's Blog. All rights reserved.</p>
+  </footer>
+</body>
+</html>
