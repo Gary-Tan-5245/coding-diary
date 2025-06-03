@@ -1,0 +1,158 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background: #cccccc;
+  color: #333;
+}
+
+/* Header */
+header {
+  margin: 0;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #111;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+header h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+p {
+  max-width: 800px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+a {
+  color: #3b8ed7;
+  text-decoration: none;
+}
+
+.main-button {
+  background: #a0bcbd;
+  color: #000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.main-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 242, 254, 0.3);
+}
+
+/* Main container */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Blog post */
+.post {
+  background: white;
+  padding: 1.5rem 3rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.post h2 {
+  color: #222;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+.pad{
+  margin-left: 2rem;
+}
+.post h3 {
+  color: #555;
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
+  text-shadow: 1px 1px #dceafc;
+}
+.post ul {
+  padding: 0.5rem 2rem;
+}
+.post .date {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+/* Code section styling */
+.code-section {
+  background: #fff;
+  border-left: 4px solid #4f46e5; /* Indigo color */
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.code-section h2 {
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+/* Code block styling */
+pre {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+}
+
+blockquote {
+  font: normal helvetica, sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  padding-left: 15px;
+  border-left: 3px solid #ccc;
+}
+
+code {
+  color: #6cd8b8;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: Consolas, monospace;
+}
+
+article code {
+  color: #008f64;
+  background-color: #eee;
+}
+

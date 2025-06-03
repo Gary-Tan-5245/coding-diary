@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Timer 101</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Understanding Software Timers: A Practical Guide</h1>
+    <p class="date">May 21, 2025</p>
+    <p>In this post, I share a clear and practical explanation of software timers — what they are, how they work, and why they're essential in embedded systems and time-sensitive applications. Whether you're new to embedded programming or brushing up on your fundamentals, this guide breaks down key concepts with real-world relevance and simple examples to help you grasp the logic behind timer management in software.</p>
+    <a href="../index.html" class="main-button">← Back to Main Page</a>
+  </header>
+
+  <main class="container">
+  <section class="code-section">
+  <h2>Software Timer in Python</h2>
+  <pre><code class="language-python">
+    import time
+    prevTime = time.time()
+    prevFlashState = 0
+    second = 1
+    freq = 2
+
+    while True:
+        currentTime = time.time()        
+        alertTimer = currentTime - prevTime
+
+        if alertTimer >=  3 * second:
+            print("Three second had passed")
+            prevTime = currentTime
+
+        flash = int(currentTime * freq * 2)%2
+        if prevFlashState != flash:
+            print(f"{['>', 'o'][flash]}_{['<', 'o'][1-flash]}")
+            prevFlashState = flash
+  </code></pre>
+  </section>
+
+    <article class="post">
+      <h2>Explanation of Python Software Timer Code</h2>
+      <p class="date">May 21, 2025</p>
+      <p>This Python code demonstrates how to implement a basic <strong>software timer</strong> and a <strong>blinking (eye flashing) state simulator</strong> using Python's built-in <code>time</code> module.</p>
+      <h3>🔧 Purpose:</h3>
+      <p>This script runs an infinite loop (while True:) that does two main things:</p>
+      <ul>
+        <li>Prints a message every 3 seconds.</li>
+        <li>Toggles between printing ">_o" and "o_<" rapidly, based on a software timer logic.</li>
+      </ul>
+      <h3>🔍 What the variables do:</h3>
+      <ul>
+        <li><code>prevTime</code> stores the timestamp of the last 3-second trigger.</li>
+        <li><code>second</code> is a time constant (used to make the code readable).</li>
+        <li><code>freq</code> controls how fast the eye flashing (">_o"/"o_<") alternates.</li>
+        <li>The <code>while True</code> loop runs forever, simulating a real-time system.</li>
+      </ul>
+
+      <h3>⏱️ Timers and Flash Logic:</h3>
+      <ul>
+        <li>Every 3 seconds, it prints <code>"Three second had passed"</code>.</li>
+        <li>The <code>flash</code> switches between the set of <code>">_o"</code> and <code>"o_<"</code> at a frequency determined by the formula: <code>int(currentTime * freq * 2) % 2</code></li>
+        <li><code>currentTime * freq * 2</code>: Multiplies time by frequency = 2 (for faster toggling).</li>
+        <li><code>int(...) % 2</code>: Alternates between 0 and 1.</li>
+        <li>This results in a rapid switch between the set of ">_o" and "o_<" about 4 times per second (because of * 2 items in the set).</li>
+        <li>The use of list indexing makes it alternate between the set of <code>[">_o", "o_<"]</code>.</li>
+        <li>This creates a high-speed toggling effect — mimicking a person blinking or changing emotional state.</li>
+        <li>To avoid printing the same state repeatedly, it only prints when the state changes.</li>
+      </ul>
+
+      <h3>🧠 Summary</h3>
+      <ul>
+        <li>Every 3 seconds, print: <code>Three second has passed</code></li>
+        <li>4 times a second, toggles and prints a set of two items: <code>">_o" → "o_<" → ">_o" → etc.</code></li>
+      </ul>
+
+      <h3>📑 References</h3>
+      <ul>
+        <li>Keijzers, M. (2021, February). <i>confirming this will blink LED at given frequency.</i>
+            <div class="pad"><a href="https://arduino.stackexchange.com/questions/81312/confirming-this-will-blink-led-at-given-frequency">https://arduino.stackexchange.com/questions/81312/confirming-this-will-blink-led-at-given-frequency</a></div>
+        </li>
+        <li>LumberingJack. (2021, April). <i>LED blink, no delay(), one line of code</i>
+            <div class="pad"><a href="https://www.reddit.com/r/arduino/comments/n1suiz/led_blink_no_delay_one_line_of_code">https://www.reddit.com/r/arduino/comments/n1suiz/led_blink_no_delay_one_line_of_code</a></div>
+        </li>
+        <li>Shahid, M. (2023, March). <i>Not able to multitask in Arduino</i>
+            <div class="pad"><a href="https://stackoverflow.com/questions/75425881/not-able-to-multitask-in-arduino">https://stackoverflow.com/questions/75425881/not-able-to-multitask-in-arduino</a></div>
+        </li>
+      </ul>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gary's Blog. All rights reserved.</p>
+  </footer>
+</body>
+</html>
