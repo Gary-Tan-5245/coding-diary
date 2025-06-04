@@ -10,29 +10,35 @@
   <header>
     <h1>Clean Code Conduct</h1>
     <p class="date">May 21, 2025</p>
-    <p>Writing clean code is more than just a technical skill—it's a mindset rooted in clarity, discipline, and respect for future developers. Inspired by <i>Robert C. Martin's</i> <strong>Clean Code</strong>, I've learned that readable, simple, and well-structured code leads to better collaboration and easier maintenance. From meaningful names to small, focused functions, the book emphasizes that every line of code should serve a clear purpose. Clean code isn't about perfection—it's about writing with care and intention.</p>
+    <p>Writing clean code is more than just a technical skill—it's a mindset rooted in clarity, 
+      discipline, and respect for future developers. Inspired by <i>Robert C. Martin's</i> 
+      <strong>Clean Code</strong>, I've learned that readable, simple, and well-structured code 
+      leads to better collaboration and easier maintenance. From meaningful names to small, focused 
+      functions, the book emphasizes that every line of code should serve a clear purpose. Clean code 
+      isn't about perfection—it's about writing with care and intention.
+    </p>
     <a href="../index.html" class="main-button">← Back to Main Page</a>
   </header>
 
   <main class="container">
   <section class="code-section">
     <h2>Meaningful Grouping of Descriptive Naming in PHP</h2>
-    <pre><code class="language-python">
+    <pre><code class="language-php">
       //GDI: Direct Fuel Injection
-      global $currentSpeed, $accelerometerPrevTime, $gdiInterval              
-      global $bmwM1SysTime, $bmwM1SysAlertTime, $bmwM1SysLogTime
-      global $motor1RevSpeed, $motor1Temp, $motor1PrevLogTime
-      global $motor2RevSpeed, $motor2Temp, $motor2PrevLogTime
-      global $motor3RevSpeed, $motor3Temp, $motor2PrevLogTime
+      global $currentSpeed, $accelerometerPrevTime, $gdiInterval;              
+      global $bmwM1SysTime, $bmwM1SysAlertTime, $bmwM1SysLogTime;
+      global $motor1RevSpeed, $motor1Temp, $motor1PrevLogTime;
+      global $motor2RevSpeed, $motor2Temp, $motor2PrevLogTime;
+      global $motor3RevSpeed, $motor3Temp, $motor2PrevLogTime;
     </code></pre>
   </section>
 
     <article class="post">
-      <h2>Explanation of Good Variable Naming Practice</h2>
-      <p>These variables clearly convey their purpose, aligning with the principle of using meaningful and intention-revealing names.</p>
-      
+      <h2>Explanation</h2>
       <h3>Functional Grouping for Readability</h3>
-      <p>The variables are grouped by their categories (e.g., <code>$motor1</code>, <code>$motor2</code>, <code>$motor3</code>), which immediately communicates their relationship. For example:</p>
+      <p>The variables are grouped by their categories (e.g., <code>$motor1</code>, <code>$motor2</code>, <code>$motor3</code>), 
+        which immediately communicates their relationship. For example:
+      </p>
       <ul>
         <li><code>$motor1RevSpeed</code>, <code>$motor1Temp</code>, <code>$motor1PrevLogTime</code> belongs to Motor 1's critical data.</li>
       </ul>
@@ -54,68 +60,123 @@
       <p>If a bug arises in one segment's motor logic, this grouping allows engineers to quickly log or inspect only the relavent variables. For example, an <code>echo()</code> statement can be easily crafted for Motor 3 alone, without having to sift through unrelated shared variables.</p>
 
       <hr/><br/>
-      <p>Although these are shared variables, this layout lays the groundwork for abstraction. For instance, in a more advanced version, these could evolve into dictionaries or classes, which will be shown in the next section and explained in depth in the third chapter of the series - <em>Key Value Mapping</em>.</p>
+      <p>Although these are shared variables, this layout lays the groundwork for abstraction. For instance, in a more advanced version, these could evolve into dictionaries or classes, which will be shown in the next section.</p>
     </article>
 
-    <section class="code-section">
-    <h2>Small, Focused Functions in PHP</h2>
-    <pre><code class="language-python">
-      //GDI: Direct Fuel Injection
-      global $currentSpeed, $accelerometerPrevTime, $gdiInterval              
-      global $bmwM1SysTime, $bmwM1SysAlertTime, $bmwM1SysLogTime
-      global $motor1RevSpeed, $motor1Temp, $motor1PrevLogTime
-      global $motor2RevSpeed, $motor2Temp, $motor2PrevLogTime
-      global $motor3RevSpeed, $motor3Temp, $motor2PrevLogTime
-    </code></pre>
-  </section>
-
-  <article>
-
-  </article>
+    
 
   <section class="code-section">
     <h2>Clear, Self-Documenting Code in PHP</h2>
-    <pre><code class="language-python">
-      //GDI: Direct Fuel Injection
-      global $currentSpeed, $accelerometerPrevTime, $gdiInterval              
-      global $bmwM1SysTime, $bmwM1SysAlertTime, $bmwM1SysLogTime
-      global $motor1RevSpeed, $motor1Temp, $motor1PrevLogTime
-      global $motor2RevSpeed, $motor2Temp, $motor2PrevLogTime
-      global $motor3RevSpeed, $motor3Temp, $motor2PrevLogTime
+    <pre><code class="language-php">
+      $ecoPower = [
+          "motor1" => $activate,
+          "motor2" => $activate,
+          "motor3" => $deactivate,
+      ];
+
+      foreach($ecoPower as $motor => $state) {
+        $vehMode[$motor] = $state;
+      }  
     </code></pre>
   </section>
 
-  <article>
+  <article class="post">
+    <h2>Explanation</h2>
+    <h3>Meaningful Names</h3>
+    <blockquote>"Use intention-revealing names."</blockquote>
+    <p>No guesswork is required. The variable names express purpose, eliminating the need for comments.</p>
+    <ul>
+      <li><code>$ecoPower</code> clearly describes a configuration of motors in eco mode.</li>
+      <li><code>$activate</code> and <code>$deactivate</code> are action-oriented and readable.</li>
+      <li><code>$vehMode</code> logically suggests it stores the vehicle's operating mode.</li>
+    </ul>
 
+    <h3>Avoid Unnecessary Comments</h3>
+    <blockquote>"Don't use comments to compensate for bad code."</blockquote>
+    <p>The code doesn't need comments like <code>// Set vehicle mode</code> because the code already <strong>reads like natural language  </strong>.</p>
+
+    <h3>DRY (Don't Repeat Yourself)</h3>
+    <blockquote>"Duplication may be the root of all evil in software."</blockquote>
+    <p>The code is concise and easily extendable—add a new motor by editing just the <code>$ecoPower</code> array.</p>
+    <p>This avoids repetitive assignment like:<br/>
+      <code>$vehMode["motor1"] = $activate;</code><br/>
+      <code>$vehMode["motor2"] = $activate;</code><br/>
+      <code>$vehMode["motor3"] = $deactivate;</code><br/>
+      and replaces it with a loop, which is cleaner, scalable, and maintainable.
+    </p>
+  </article>
+
+  <section class="code-section">
+    <h2>Small, Focused Functions in PHP</h2>
+    <pre><code class="language-php">
+      function m1_motor1_temp_detection(){
+        ...
+      }
+    </code></pre>
+  </section>
+
+  <article class="post">
+    <h2>Explanation</h2>
+    <h3>Single Responsibility Principle</h3>
+    <blockquote>"A function should do one thing, and do it well."</blockquote>
+    <p>The function m1_motor1_temp_detection() is clearly named to indicate that it performs a single task: 
+      polling the temperature of Motor 1 in a BMW M1 car. It doesn't trigger outputs. This acieves the objectives:
+    </p>
+    <ul>
+      <li>Makes the function easy to reason about.</li>
+      <li>Reduces the risk of unintended side effects.</li>
+    </ul>
+    <br/>
   </article>
 
   <section class="code-section">
     <h2>Avoidance of Magic Numbers in PHP</h2>
-    <pre><code class="language-python">
-      //GDI: Direct Fuel Injection
-      global $currentSpeed, $accelerometerPrevTime, $gdiInterval              
-      global $bmwM1SysTime, $bmwM1SysAlertTime, $bmwM1SysLogTime
-      global $motor1RevSpeed, $motor1Temp, $motor1PrevLogTime
-      global $motor2RevSpeed, $motor2Temp, $motor2PrevLogTime
-      global $motor3RevSpeed, $motor3Temp, $motor2PrevLogTime
+    <pre><code class="language-php">
+      $kn = 1;
+      $n = 0.001 * $kn;
+      $activate = 1;
+      $deactivate = 0;
     </code></pre>
   </section>
 
-  <article>
+  <article class="post">
+    <h2>Explanation</h2>
+    <h3>Clarity Through Naming</h3>
+    <blockquote>"A magic number is a literal that appears in code without explanation. Replace magic numbers with named constants to give them meaning."</blockquote>
+    <p>The code is easier to read and understand. Instead of asking "Why is 1 used here?", the reader knows it's for activation.</p>
 
+    <h3>Maintainability and Scalability</h3>
+    <p>Changes in logic don't require scanning the whole codebase—one update changes all references.</p>
+
+    <h3>Avoiding Hidden Logic</h3>
+    <p>This avoids unexplained and contextless magic numbers like:<br/>
+      <code>$throttle = 0.001;</code><br/>
+      and replacing it with a standardised speed factor:<br/>
+      <code>$throttle = 1 * $n;</code>
+    </p>
+    <p>By replacing magic numbers with named constant, it makes the logic transparent and intention-revealing, which is at the heart of clean, professional code.</p>
   </article>
 
   <section class="code-section">
     <h2>Defensive Programming in PHP</h2>
-    <pre><code class="language-python">
-      //GDI: Direct Fuel Injection
-      global $currentSpeed, $accelerometerPrevTime, $gdiInterval              
-      global $bmwM1SysTime, $bmwM1SysAlertTime, $bmwM1SysLogTime
-      global $motor1RevSpeed, $motor1Temp, $motor1PrevLogTime
-      global $motor2RevSpeed, $motor2Temp, $motor2PrevLogTime
-      global $motor3RevSpeed, $motor3Temp, $motor2PrevLogTime
+    <pre><code class="language-php">
+      if ($engineOverheat == true) {
+        return null;
+      }
     </code></pre>
   </section>
+
+  <article class="post">
+    <h2>Explanation</h2>
+    <h3>Prevents Unsafe Execution</h3>
+    <p>This condition checks if the engine is overheating — a critical failure state in any system. <br/>
+      Instead of proceeding with further logic (which might involve controlling motors, updating UI, or logging data), the function exits early.
+    </p>
+    <p>The code is protecting the vehicle from executing under unsafe conditions, which could cause damage, instability, or invalid output.</p>
+
+    <h3>Encourages Robustness</h3>
+    <p>Defensive coding anticipates real-world unpredictability—e.g., sensor failures, user misuse, environmental hazards.</p>
+  </article>
 
   </main>
 
